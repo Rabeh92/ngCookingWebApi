@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ngCookingWebApi.Persistance.Repositories.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace ngCookingWebApi.Persistance
 {
     interface IUnitOfWork
     {
+       
     }
 }

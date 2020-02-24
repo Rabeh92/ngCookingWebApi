@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ngCookingWebApi.Persistance.Repositories.Abstract
 {
-    interface ICommentRepository
+    public interface ICommentRepository
     {
         IEnumerable<Comment> GetCommentByRecette(int idRecette);
         void AddCommentToRecette(Comment comment, int idRecette);

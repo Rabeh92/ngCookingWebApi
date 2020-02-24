@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ngCookingWebApi.Persistance.Repositories.Abstract
 {
-    interface IRecetteRepository
+    public interface IRecetteRepository
     {
         IEnumerable<Recette> GetAllRecette();
         Recette GetRecette(int id);

@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace ngCookingWebApi.Persistance
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
-       
+        IIngredientRepository Ingredients { get; set; }
+        IRecetteRepository Recettes { get; set; }
+        ICommentRepository Comments { get; set; }
+        void Complete();
+        void Dispose();
     }
 }

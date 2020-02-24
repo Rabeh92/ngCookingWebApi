@@ -7,8 +7,31 @@ using System.Web;
 
 namespace ngCookingWebApi.Persistance.Repositories.Concrete
 {
-    public class IngredientRepository 
+    public class IngredientRepository : IIngredientRepository
     {
-        
+        public void AddNewIngredient(Ingredient ingredient)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteIngredient(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Ingredient> GetAlIngredient()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Ingredient GetIngredient(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateUpdateIngredient(int id, Ingredient ingredient)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

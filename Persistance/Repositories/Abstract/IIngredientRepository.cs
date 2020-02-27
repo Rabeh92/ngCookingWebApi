@@ -12,7 +12,7 @@ namespace ngCookingWebApi.Persistance.Repositories.Abstract
         IEnumerable<Ingredient> GetAlIngredient();
         Ingredient GetIngredient(int id);
         void AddNewIngredient(Ingredient ingredient);
-        void UpdateUpdateIngredient(int id,Ingredient ingredient);
-        void DeleteIngredient(int id);
+        void UpdateIngredient(Ingredient ingredientInDb,Ingredient ingredient);
+        void DeleteIngredient(Ingredient ingredient);
     }
 }

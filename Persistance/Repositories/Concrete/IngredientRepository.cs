@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Unity;
 
 namespace ngCookingWebApi.Persistance.Repositories.Concrete
 {
     public class IngredientRepository : IIngredientRepository
     {
+        
         private readonly ApplicationDbContext _context;
         public IngredientRepository(ApplicationDbContext context)
         {
@@ -18,18 +20,27 @@ namespace ngCookingWebApi.Persistance.Repositories.Concrete
         public void AddNewIngredient(Ingredient ingredient)
         {
             _context.Ingredients.Add(ingredient);
-            
+            //_context.SaveChanges();
         }
 
-        public void DeleteIngredient(int id)
+        public void DeleteIngredient(Ingredient ingredient)
         {
 
-            _context.Ingredients.Remove(_context.Ingredients.Single(i => i.Id == id));
+            _context.Ingredients.Remove(ingredient);
         }
 
         public IEnumerable<Ingredient> GetAlIngredient()
         {
-            return _context.Ingredients.ToList();
+            try
+            {
+                return _context.Ingredients.ToList();
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+            
         }
 
         public Ingredient GetIngredient(int id)
@@ -37,9 +48,8 @@ namespace ngCookingWebApi.Persistance.Repositories.Concrete
             return _context.Ingredients.FirstOrDefault(i => i.Id == id);
         }
 
-        public void UpdateUpdateIngredient(int id, Ingredient ingredient)
+        public void UpdateIngredient(Ingredient ingredientInDb, Ingredient ingredient)
         {
-            var ingredientInDb = _context.Ingredients.FirstOrDefault(i => i.Id == id);
             // set original entity state to detached
             _context.Entry(ingredientInDb).State = EntityState.Detached;
 

@@ -17,6 +17,8 @@ namespace ngCookingWebApi
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -25,6 +27,12 @@ namespace ngCookingWebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //Configure Json formatting
+            config.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
         }
     }
 }

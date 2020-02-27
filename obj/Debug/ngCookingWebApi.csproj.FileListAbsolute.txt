@@ -244,3 +244,10 @@ C:\Users\C17 Developer\source\repos\ngCookingWebApi\obj\Debug\ngCookingWebApi.cs
 C:\Users\C17 Developer\source\repos\ngCookingWebApi\obj\Debug\ngCookingWebApi.csproj.CopyComplete
 C:\Users\C17 Developer\source\repos\ngCookingWebApi\obj\Debug\ngCookingWebApi.dll
 C:\Users\C17 Developer\source\repos\ngCookingWebApi\obj\Debug\ngCookingWebApi.pdb
+C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\Unity.Abstractions.dll
+C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\Unity.Container.dll
+C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\Unity.WebApi.dll
+C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\Unity.Abstractions.pdb
+C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\Unity.Container.pdb

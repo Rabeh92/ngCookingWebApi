@@ -1,29 +1,27 @@
-﻿using System;
+﻿using ngCookingWebApi.Models;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ngCookingWebApi.Models
+namespace ngCookingWebApi.Dtos
 {
-    public class Ingredient
+    public class IngredientDto
     {
-        public Ingredient()
-        {
-            Recettes = new Collection<Recette>();
-        }
         public int Id { get; set; }
 
-        public string Name { get; set; } 
+        [Required]
+        public string Name { get; set; }
         public bool IsAvailable { get; set; }
         public string Picture { get; set; }
         public CategorieIngredient Categorie { get; set; }
 
+        [Required]
         public int CategorieId { get; set; }
 
         public int Calorie { get; set; }
-
+        [StringLength(300)]
         public string Description { get; set; }
-        public ICollection<Recette> Recettes { get; set; }
     }
 }

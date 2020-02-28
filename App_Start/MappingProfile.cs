@@ -7,15 +7,14 @@ using ngCookingWebApi.Models;
 using ngCookingWebApi.Dtos;
 using AutoMapper.Configuration;
 
-namespace ngCookingWebApi.App_Start
+namespace ngCookingWebApi
 {
     public class MappingProfile: Profile
     {
-        public static void Run()
+        public static MapperConfiguration GetConfiguration()
         {
-            var cfg = new MapperConfigurationExpression();
-            cfg.AddProfile<MappingProfile>();
-            
+           return new MapperConfiguration(cfg=>cfg.AddProfile<MappingProfile>());
+
         }
         public MappingProfile()
         {

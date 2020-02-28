@@ -14,6 +14,7 @@ namespace ngCookingWebApi.Controllers
     public class IngredientsController : ApiController
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly Mapper mapper = new Mapper(MappingProfile.GetConfiguration());
         public IngredientsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -27,7 +28,7 @@ namespace ngCookingWebApi.Controllers
             if (IngredientsList.Count() == 0)
                 return NotFound();
 
-            return Ok(IngredientsList);
+            return Ok(IngredientsList.Select(ing => mapper.Map<Ingredient, IngredientDto>(ing)));
         }
 
         [HttpGet]
@@ -39,18 +40,19 @@ namespace ngCookingWebApi.Controllers
             if (ingredient == null)
                 return NotFound();
 
-            return Ok(ingredient);
+            var ingredientDto = mapper.Map<Ingredient>(ingredient);
+            return Ok(ingredientDto);
         }
 
         [HttpPost]
-        //[Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("AddNewIngredient")]
-        public IHttpActionResult AddNewIngredient(Ingredient ingredient)
+        public IHttpActionResult AddNewIngredient(IngredientDto ingredientDto)
         {
             if (!ModelState.IsValid)
-                return BadRequest();
+                return BadRequest(ModelState);
 
-            
+            var ingredient = mapper.Map<IngredientDto, Ingredient>(ingredientDto);
             _unitOfWork.Ingredients.AddNewIngredient(ingredient);
             try
             {
@@ -59,15 +61,16 @@ namespace ngCookingWebApi.Controllers
             catch (Exception ex)
             {
                 return InternalServerError(ex);
-               
+
             }
-           
-            return Created(new Uri(Request.RequestUri + "/" + ingredient.Id), ingredient);
+            mapper.Map(ingredient, ingredientDto);
+            return Created(new Uri(Request.RequestUri + "/" + ingredientDto.Id), ingredientDto);
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         [Route("UpdateIngredient/{id:int}")]
-        public IHttpActionResult UpdateIngredient(int id, Ingredient ingredient)
+        public IHttpActionResult UpdateIngredient(int id, IngredientDto ingredientDto)
         {
             var ingredientInDb = _unitOfWork.Ingredients.GetIngredient(id);
             if (ingredientInDb == null)
@@ -75,6 +78,7 @@ namespace ngCookingWebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            var ingredient = mapper.Map<IngredientDto, Ingredient>(ingredientDto);
             _unitOfWork.Ingredients.UpdateIngredient(ingredientInDb, ingredient);
             try
             {
@@ -85,11 +89,12 @@ namespace ngCookingWebApi.Controllers
 
                 return InternalServerError(ex);
             }
-            
+
             return Ok();
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin")]
         [Route("DeleteIngredient/ID")]
         public IHttpActionResult DeleteIngredient(int id)
         {
@@ -107,9 +112,10 @@ namespace ngCookingWebApi.Controllers
 
                 return InternalServerError(ex);
             }
-            
+
             return Ok();
         }
+
         //protected override void Dispose(bool disposing)
         //{
         //    _unitOfWork.Dispose();

@@ -21,6 +21,7 @@ namespace ngCookingWebApi.Dtos
         public int CategorieId { get; set; }
 
         public int Calorie { get; set; }
+
         [StringLength(300)]
         public string Description { get; set; }
     }

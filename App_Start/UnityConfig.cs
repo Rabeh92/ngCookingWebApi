@@ -19,6 +19,7 @@ namespace ngCookingWebApi
             // it is NOT necessary to register your controllers
             container.RegisterType<IUnitOfWork, UnitOfWork>(new InjectionConstructor(context));
             container.RegisterType<IIngredientRepository, IngredientRepository>(new InjectionConstructor(context));
+            container.RegisterType<IRecetteRepository, RecetteRepository>(new InjectionConstructor(context));
             container.RegisterType<IMapper, Mapper>(new InjectionConstructor(MappingProfile.GetConfiguration()));
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

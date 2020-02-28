@@ -6,7 +6,7 @@ using Unity;
 using Unity.Injection;
 using Unity.Lifetime;
 using Unity.WebApi;
-
+using AutoMapper;
 namespace ngCookingWebApi
 {
     public static class UnityConfig
@@ -19,6 +19,7 @@ namespace ngCookingWebApi
             // it is NOT necessary to register your controllers
             container.RegisterType<IUnitOfWork, UnitOfWork>(new InjectionConstructor(context));
             container.RegisterType<IIngredientRepository, IngredientRepository>(new InjectionConstructor(context));
+            container.RegisterType<IMapper, Mapper>(new InjectionConstructor(MappingProfile.GetConfiguration()));
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }
     }

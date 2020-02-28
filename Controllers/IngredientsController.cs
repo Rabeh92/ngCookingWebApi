@@ -14,10 +14,11 @@ namespace ngCookingWebApi.Controllers
     public class IngredientsController : ApiController
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly Mapper mapper = new Mapper(MappingProfile.GetConfiguration());
-        public IngredientsController(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public IngredientsController(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -28,7 +29,7 @@ namespace ngCookingWebApi.Controllers
             if (IngredientsList.Count() == 0)
                 return NotFound();
 
-            return Ok(IngredientsList.Select(ing => mapper.Map<Ingredient, IngredientDto>(ing)));
+            return Ok(IngredientsList.Select(ing => _mapper.Map<Ingredient, IngredientDto>(ing)));
         }
 
         [HttpGet]
@@ -40,7 +41,7 @@ namespace ngCookingWebApi.Controllers
             if (ingredient == null)
                 return NotFound();
 
-            var ingredientDto = mapper.Map<Ingredient>(ingredient);
+            var ingredientDto = _mapper.Map<Ingredient>(ingredient);
             return Ok(ingredientDto);
         }
 
@@ -52,7 +53,7 @@ namespace ngCookingWebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var ingredient = mapper.Map<IngredientDto, Ingredient>(ingredientDto);
+            var ingredient = _mapper.Map<IngredientDto, Ingredient>(ingredientDto);
             _unitOfWork.Ingredients.AddNewIngredient(ingredient);
             try
             {
@@ -63,7 +64,7 @@ namespace ngCookingWebApi.Controllers
                 return InternalServerError(ex);
 
             }
-            mapper.Map(ingredient, ingredientDto);
+            _mapper.Map(ingredient, ingredientDto);
             return Created(new Uri(Request.RequestUri + "/" + ingredientDto.Id), ingredientDto);
         }
 
@@ -78,7 +79,7 @@ namespace ngCookingWebApi.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var ingredient = mapper.Map<IngredientDto, Ingredient>(ingredientDto);
+            var ingredient = _mapper.Map<IngredientDto, Ingredient>(ingredientDto);
             _unitOfWork.Ingredients.UpdateIngredient(ingredientInDb, ingredient);
             try
             {

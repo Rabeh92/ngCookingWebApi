@@ -20,7 +20,7 @@ namespace ngCookingWebApi.Persistance.Repositories.Concrete
         public void AddNewIngredient(Ingredient ingredient)
         {
             _context.Ingredients.Add(ingredient);
-            //_context.SaveChanges();
+            
         }
 
         public void DeleteIngredient(Ingredient ingredient)
@@ -33,7 +33,7 @@ namespace ngCookingWebApi.Persistance.Repositories.Concrete
         {
             try
             {
-                return _context.Ingredients.ToList();
+                return _context.Ingredients.Include(i=>i.Categorie).ToList();
             }
             catch (Exception)
             {
@@ -45,7 +45,7 @@ namespace ngCookingWebApi.Persistance.Repositories.Concrete
 
         public Ingredient GetIngredient(int id)
         {
-            return _context.Ingredients.FirstOrDefault(i => i.Id == id);
+            return _context.Ingredients.Include(i=>i.Categorie).FirstOrDefault(i => i.Id == id);
         }
 
         public void UpdateIngredient(Ingredient ingredientInDb, Ingredient ingredient)

@@ -15,7 +15,7 @@ namespace ngCookingWebApi.Dtos
         public string Name { get; set; }
         public bool IsAvailable { get; set; }
         public string Picture { get; set; }
-        public CategorieIngredient Categorie { get; set; }
+        public CategorieIngredientDto Categorie { get; set; }
 
         [Required]
         public int CategorieId { get; set; }

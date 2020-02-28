@@ -96,7 +96,7 @@ namespace ngCookingWebApi.Controllers
 
         [HttpDelete]
         [Authorize(Roles = "Admin")]
-        [Route("DeleteIngredient/ID")]
+        [Route("DeleteIngredient/{id:int}")]
         public IHttpActionResult DeleteIngredient(int id)
         {
             var ingredientInDb = _unitOfWork.Ingredients.GetIngredient(id);
@@ -114,7 +114,7 @@ namespace ngCookingWebApi.Controllers
                 return InternalServerError(ex);
             }
 
-            return Ok();
+            return Ok(id);
         }
 
         //protected override void Dispose(bool disposing)

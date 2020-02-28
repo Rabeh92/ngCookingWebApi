@@ -225,6 +225,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IngredientsController.cs" />
+    <Compile Include="Controllers\RecettesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Dtos\CategorieIngredientDto.cs" />
     <Compile Include="Dtos\IngredientDto.cs" />

@@ -10,7 +10,7 @@ namespace ngCookingWebApi.Persistance.Repositories.Abstract
     public interface ICommentRepository
     {
         IEnumerable<Comment> GetCommentByRecette(int idRecette);
-        void AddCommentToRecette(Comment comment, int idRecette);
-        int GetMarktByRecette(int idRecette);
+        void AddCommentToRecette(Comment comment);
+        double GetMarkByRecette(int idRecette);
     }
 }

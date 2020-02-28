@@ -9,19 +9,28 @@ namespace ngCookingWebApi.Persistance.Repositories.Concrete
 {
     public class CommentRepository : ICommentRepository
     {
-        public void AddCommentToRecette(Comment comment, int idRecette)
+        private readonly ApplicationDbContext _context;
+        public CommentRepository(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public void AddCommentToRecette(Comment comment)
+        {
+            _context.Comments.Add(comment);
         }
 
         public IEnumerable<Comment> GetCommentByRecette(int idRecette)
         {
-            throw new NotImplementedException();
+            return _context.Comments
+                .Where(c => c.Id == idRecette)
+                .ToList();
         }
 
-        public int GetMarktByRecette(int idRecette)
+        public double GetMarkByRecette(int idRecette)
         {
-            throw new NotImplementedException();
+            return _context.Comments
+                .Where(c => c.RecetteId == idRecette)
+                .Average(c => c.Mark);
         }
     }
 }

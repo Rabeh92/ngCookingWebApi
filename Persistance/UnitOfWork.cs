@@ -15,8 +15,11 @@ namespace ngCookingWebApi.Persistance
         {
             _context = context;
         }
+
         [Dependency]
         public IIngredientRepository Ingredients { get; set; }
+
+        [Dependency]
         public IRecetteRepository Recettes { get; set; }
         public ICommentRepository Comments { get; set; }
 

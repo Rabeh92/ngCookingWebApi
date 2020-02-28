@@ -229,6 +229,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Dtos\CategorieIngredientDto.cs" />
     <Compile Include="Dtos\IngredientDto.cs" />
+    <Compile Include="Dtos\RecetteDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

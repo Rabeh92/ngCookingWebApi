@@ -23,7 +23,7 @@ namespace ngCookingWebApi.Controllers
 
         [HttpGet]
         [Route("GetAllIngredient")]
-        public IHttpActionResult GetAlIngredient()
+        public IHttpActionResult GetAllIngredient()
         {
             var IngredientsList = _unitOfWork.Ingredients.GetAlIngredient();
             if (IngredientsList.Count() == 0)
@@ -117,10 +117,10 @@ namespace ngCookingWebApi.Controllers
             return Ok(id);
         }
 
-        //protected override void Dispose(bool disposing)
-        //{
-        //    _unitOfWork.Dispose();
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            _unitOfWork.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace ngCookingWebApi
             CreateMap<IngredientDto,Ingredient>();
             CreateMap<CategorieIngredient, CategorieIngredientDto>();
             CreateMap<CategorieIngredientDto, CategorieIngredient>();
+            CreateMap<Recette, RecetteDto>();
+            CreateMap<RecetteDto, Recette>();
         }
     }
 }

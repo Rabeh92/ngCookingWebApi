@@ -21,6 +21,8 @@ namespace ngCookingWebApi.Persistance
 
         [Dependency]
         public IRecetteRepository Recettes { get; set; }
+
+        [Dependency]
         public ICommentRepository Comments { get; set; }
 
         public void Complete()

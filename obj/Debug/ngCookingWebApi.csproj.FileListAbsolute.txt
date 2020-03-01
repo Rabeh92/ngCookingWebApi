@@ -254,3 +254,13 @@ C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\Unity.Container.pdb
 C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\AutoMapper.dll
 C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\AutoMapper.pdb
 C:\Users\C17 Developer\source\repos\ngCookingWebApi\bin\AutoMapper.xml
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\AutoMapper.dll
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\Unity.Abstractions.dll
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\Unity.Container.dll
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\Unity.WebApi.dll
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\AutoMapper.pdb
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\AutoMapper.xml
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\Unity.Abstractions.pdb
+C:\Users\rabeh\source\repos\ngCookingWebApi\bin\Unity.Container.pdb

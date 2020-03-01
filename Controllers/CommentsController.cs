@@ -48,6 +48,7 @@ namespace ngCookingWebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles ="Admin,Cuisinier,Standard")]
         [Route("AddCommentToRecette/{idRecette}")]
         public IHttpActionResult AddCommentToRecette(int idRecette, CommentDto commentDto)
         {
